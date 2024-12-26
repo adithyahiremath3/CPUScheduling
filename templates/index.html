@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU Scheduling Simulator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>CPU Scheduling Algorithms</h1>
+        <form action="/schedule" method="post">
+            <div id="process-container">
+                <div class="process-row">
+                    <label>Process:</label>
+                    <input type="text" name="process" required>
+                    <label>Burst Time:</label>
+                    <input type="number" name="burst_time" required>
+                    <label>Arrival Time:</label>
+                    <input type="number" name="arrival_time" required>
+                </div>
+            </div>
+            <button type="button" onclick="addProcess()">Add Process</button>
+            <label>Quantum (for Round Robin):</label>
+            <input type="number" name="quantum" required>
+            <button type="submit" class="submit-btn">Simulate</button>
+        </form>
+    </div>
+    <script>
+        function addProcess() {
+            const container = document.getElementById('process-container');
+            const row = document.createElement('div');
+            row.classList.add('process-row');
+            row.innerHTML = `
+                <label>Process:</label>
+                <input type="text" name="process" required>
+                <label>Burst Time:</label>
+                <input type="number" name="burst_time" required>
+                <label>Arrival Time:</label>
+                <input type="number" name="arrival_time" required>
+            `;
+            container.appendChild(row);
+        }
+    </script>
+</body>
+</html>

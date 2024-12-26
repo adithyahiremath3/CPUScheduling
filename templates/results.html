@@ -1,0 +1,53 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scheduling Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>CPU Scheduling Results</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Algorithm</th>
+                    <th>Average Turnaround Time</th>
+                    <th>Average Weighted Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>First Come First Serve (FCFS)</td>
+                    <td>{{ results['First Come First Serve']['avg_tat'] }}</td>
+                    <td>{{ results['First Come First Serve']['avg_wt'] }}</td>
+                </tr>
+                <tr>
+                    <td>Shortest Job First (SJF)</td>
+                    <td>{{ results['Shortest Job First']['avg_tat'] }}</td>
+                    <td>{{ results['Shortest Job First']['avg_wt'] }}</td>
+                </tr>
+                <tr>
+                    <td>Longest Completion Next (LCN)</td>
+                    <td>{{ results['Longest Completion Next']['avg_tat'] }}</td>
+                    <td>{{ results['Longest Completion Next']['avg_wt'] }}</td>
+                </tr>
+                <tr>
+                    <td>Round Robin</td>
+                    <td>{{ results['Round Robin']['avg_tat'] }}</td>
+                    <td>{{ results['Round Robin']['avg_wt'] }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Best Algorithm</h2>
+        <p>The best scheduling algorithm is: <strong>{{ best_algorithm }}</strong></p>
+
+        <h2>Graphical Comparison</h2>
+        <img src="data:image/png;base64,{{ plot_url }}" alt="Scheduling Algorithms Comparison">
+
+        <a href="/" class="back-btn">Go Back</a>
+    </div>
+</body>
+</html>
